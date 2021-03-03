@@ -1,0 +1,42 @@
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+# Stages can help you organize your steps in stages
+stages:
+  - "clone"
+  - "build"
+  - "notify"  
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "kostis-codefresh/humanitec-example"
+    revision: "${{CF_BRANCH}}"
+    git: "github-1"
+    stage: "clone"
+  push_image_to_humanitec:
+    title: Building Docker image
+    type: build
+    stage: "build"
+    working_directory: ./humanitec-example   
+    image_name: ${{IMAGE_NAME}} 
+    tag: ${{CF_REVISION}}
+    registry: humanitec   
+  notify_humanitec:
+    title: Notify Humanitec
+    stage: "notify"
+    type: freestyle
+    arguments:
+      image: 'kostiscodefresh/humanitec-notify-step'
+      commands:
+        - /app/humanitec-notify-step -organization ${{HUMANITEC_ORG}} -humanitec-token ${{HUMANITEC_TOKEN}} -mode notify -image-name from-codefresh-auto-plugin -image-git-commit ${{CF_REVISION}} -image-git-branch ${{CF_BRANCH}} -image-url registry.humanitec.io/codepipes/${{IMAGE_NAME}}:${{CF_REVISION}}
+
+
+    
+    
+    
+    
+
+
