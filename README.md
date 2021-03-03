@@ -1,6 +1,6 @@
 # Codefresh - Humanitec integration
 
-This is an example for pushing a container image from Codefresh to Humanitec anda notifying Humanitec for the new build
+This is an example for pushing a container image from Codefresh to Humanitec and notifying Humanitec for the new build
 
 ## Step 1 - Connect the Humanitec Registry to Codefresh
 
@@ -10,7 +10,7 @@ Registry in Codefresh](https://codefresh.io/docs/docs/integrations/docker-regist
 [![Registry settings](humanitec-registry.png)](humanitec-registry.png)
 
 You can optionally fill in the *Repository prefix* field with your Humanitec Organization so that you don't have
-to remember to include it in your push steps
+to remember to include it in your push steps.
 
 ## Step 2 - Create a Codefresh pipeline that builds/pushes an image
 
@@ -18,13 +18,13 @@ See file [codefresh.yml](codefresh.yml) for the full pipeline.
 
 [![Codefresh pipeline](humanitec-codefresh.png)](humanitec-codefresh.png)
 
-It does the following.
+It does the following:
 
 1. Clones the source code of your app
 1. Builds a container image and pushes it to the Humanitec registry
 1. Notifies Humanitec for the new build
 
-The pipelines expect the following parameters:
+The pipeline expects the following parameters:
 
 * `IMAGE_NAME` - your docker image name (user defined)
 * `HUMANITEC_ORG` - You Humanitec organization (created during sign-up)

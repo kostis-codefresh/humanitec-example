@@ -31,12 +31,5 @@ steps:
     arguments:
       image: 'kostiscodefresh/humanitec-notify-step'
       commands:
-        - /app/humanitec-notify-step -organization ${{HUMANITEC_ORG}} -humanitec-token ${{HUMANITEC_TOKEN}} -mode notify -image-name ${{IMAGE_NAME}} -image-git-commit ${{CF_REVISION}} -image-git-branch ${{CF_BRANCH}} -image-url registry.humanitec.io/codepipes/${{IMAGE_NAME}}:${{CF_REVISION}}
-
-
-    
-    
-    
-    
-
+        - /app/humanitec-notify-step -organization ${{HUMANITEC_ORG}} -humanitec-token ${{HUMANITEC_TOKEN}} -mode notify -image-name ${{IMAGE_NAME}} -image-git-commit ${{CF_REVISION}} -image-git-branch ${{CF_BRANCH}} -image-url registry.humanitec.io/${{HUMANITEC_ORG}}/${{IMAGE_NAME}}:${{CF_REVISION}}
 
