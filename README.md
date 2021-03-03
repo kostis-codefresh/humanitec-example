@@ -24,6 +24,12 @@ It does the following.
 1. Builds a container image and pushes it to the Humanitec registry
 1. Notifies Humanitec for the new build
 
+The pipelines expect the following parameters:
+
+* `IMAGE_NAME` - your docker image name (user defined)
+* `HUMANITEC_ORG` - You Humanitec organization (created during sign-up)
+* `HUMANITEC_TOKEN` - Your Humanitec token (get it from Humanitec UI)
+
 The notification source code is at [https://github.com/kostis-codefresh/humanitec-notify-step](https://github.com/kostis-codefresh/humanitec-notify-step)
 
 
